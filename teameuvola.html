@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Team Euvola Bio-Data!</title>
+
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			background-color: #f0f0f0;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 800px;
+			text-align: center;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.formElement, input[type='submit'] {
+			display: block;
+			margin: 1rem;
+			padding: 0.5rem;
+			width: 100%;
+			max-width: 300px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+
+		.user-info {
+			margin-top: 20px;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+			display: none;
+		}
+
+		#display-area {
+			margin-top: 20px;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<h1>Team Euvola Bio-Data</h1>
+		<form id="user-form">
+			<input type="text" id="firstname" placeholder="First Name" class="formElement">
+			<input type="text" id="surname" placeholder="Surname" class="formElement">
+			<input type="number" id="phoneNumber" placeholder="Phone Number" class="formElement">
+			<input type="email" id="email" placeholder="Email" class="formElement">
+			<select id="gender" class="formElement">
+				<option value="" disabled="disabled" selected="selected">Gender</option>
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+				<option value="Other">Other</option>
+			</select>
+			<input type="number" id="width" placeholder="Width (px)" class="formElement">
+			<input type="color" id="color" class="formElement">
+			<input type="submit" value="Submit" class="formElement">
+		</form>
+
+		<!-- Team Euvola Bio-Data Display Area -->
+		<div class="user-info" id="display-area">
+			<h2>Team Euvola Bio-Data</h2>
+			<p><strong>Name:</strong> <span id="display-name"></span></p>
+			<p><strong>Phone Number:</strong> <span id="display-phone"></span></p>
+			<p><strong>Email:</strong> <span id="display-email"></span></p>
+			<p><strong>Gender:</strong> <span id="display-gender"></span></p>
+		</div>
+	</div>
+
+	<script>
+		const userForm = document.getElementById('user-form');
+		const displayArea = document.getElementById('display-area');
+		const displayName = document.getElementById('display-name');
+		const displayPhone = document.getElementById('display-phone');
+		const displayEmail = document.getElementById('display-email');
+		const displayGender = document.getElementById('display-gender');
+
+		userForm.addEventListener('submit', function(event) {
+			event.preventDefault();
+
+			const firstName = document.getElementById('firstname').value;
+			const surname = document.getElementById('surname').value;
+			const phoneNumber = document.getElementById('phoneNumber').value;
+			const email = document.getElementById('email').value;
+			const gender = document.getElementById('gender').value;
+			const width = document.getElementById('width').value + 'px';
+			const color = document.getElementById('color').value;
+
+			// Update display area with team euvola bio-data
+			displayName.textContent = `${firstName} ${surname}`;
+			displayPhone.textContent = phoneNumber;
+			displayEmail.textContent = email;
+			displayGender.textContent = gender;
+
+			// Apply user-selected style to display area
+			displayArea.style.width = width;
+			displayArea.style.backgroundColor = color;
+
+			// Display the team euvola bio-data
+			displayArea.style.display = 'block';
+		});
+	</script>
+</body>
+</html>
